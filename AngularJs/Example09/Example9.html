@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+ 
+    <script src="AngularJS.js"></script>
+</head>
+<body>
+
+    <form name="myform" ng-app>
+        Email: <input type="email" ng-model="emailData"   /> <br>
+        month Key-in is <span ng-bind="emailData"></span>.<br />
+
+        InValid Email: <input type="email" name="emailDataName" ng-model="emailIData"  />  <span ng-show="myform.emailDataName.$error.email">Please key-in proper email!</span><br>
+        month Key-in is <span ng-bind="emailIData"></span>.<br />
+
+        Require Email: <input type="email" name="emailRiqureDataName" ng-model="emailRiqureData" ng-required="true"  />  <span ng-show="myform.emailRiqureDataName.$error.required">Please key-in email!</span><br>
+        Email Key-in is <span ng-bind="emailRiqureData"></span>.<br />
+    </form>
+</body>
+</html>

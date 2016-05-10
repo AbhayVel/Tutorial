@@ -1,0 +1,48 @@
+﻿<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+      <script src="AngularJS.js"></script>
+    <script>
+        var Mynames = ['Abhay', 'Amruta', 'Ajay', 'Alok'];
+        var app = angular.module('myApp', []);
+        app.controller('EmployeeCtrl', function ($scope) {
+
+            $scope.firstName = '';
+
+            $scope.names = Mynames;
+
+            $scope.addName = function () {
+                $scope.names.push($scope.firstName);
+                $scope.firstName = '';
+            };
+
+            $scope.removeName = function (name) {
+                var i = $scope.names.indexOf(name);
+                $scope.names.splice(i, 1);
+            };
+
+        });
+
+        function ChangeValues()
+        {
+            Mynames[0] = Mynames[0] + "1";
+            alert(Mynames[0])
+            
+        }
+    </script>
+  </head>
+  <body ng-app="myApp"  ng-controller="EmployeeCtrl">
+      <form name="myform" ng-submit="addName()" >       
+          <div >
+               Employee: <input type="text" ng-model="firstName" /> 
+                <input type="button" ng-click="addName()" value="Add"> <br /> 
+              <input type="button" value="New" onclick="ChangeValues()"> <br /> 
+              List of Employee: 
+              <ul>
+                    <li ng-repeat="name in names">{{name}}  <a href="" ng-click="removeName(name)">remove</a></li>
+               </ul>            
+          </div>         
+      </form> 
+  </body>          
+</html> 

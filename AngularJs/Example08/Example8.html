@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+</head>
+<body>
+
+    <form name="myform" ng-app>
+        Time: <input type="time" ng-model="timeData" placeholder="HH:mm:ss"  /> <br>
+        Time Key-in is <span ng-bind="timeData | date:'HH:mm'"></span>.<br />
+
+        InValid Time: <input type="time" name="timeRangeDataName" ng-model="timeRangeData" placeholder="HH:mm:ss"   min="09:00:00" max="17:30:00" />  <span ng-show="myform.timeRangeDataName.$error.min || myform.timeRangeDataName.$error.max">Please key-in time between(09:00:00 and 17:30:00)!</span><br>
+        Time Key-in is <span ng-bind="timeRangeData"></span>.<br />
+
+        Require Time: <input type="time" name="timeRiqureDataName" ng-model="timeRiqureData" ng-required="true" placeholder="HH:mm:ss"    min="09:00:00" max="17:30:00" />  <span ng-show="myform.timeRiqureDataName.$error.required">Please key-in time!</span><br>
+        Time Key-in is <span ng-bind="timeRiqureData"></span>.<br />
+    </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<form name="frmEmployee" class="form-horizontal">
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label">ID:</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="employee.empId" ng-disabled="!edit" placeholder="Name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Employee Name:</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="employee.name" ng-disabled="!edit" placeholder="Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{RepositoryDatafunction('SalaryLabel')}}:</label>
+        <div class="col-sm-10">
+            <input type="text" name="empSalary" ng-model="employee.Salary" ng-disabled="!edit" placeholder="Salary" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/">
+            <span ng-show="frmEmployee.empSalary.$error.pattern">Not valid Salary!</span><br>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{RepositoryDatafunction('DOJLabel')}}:</label>
+        <div class="col-sm-10">
+            <input type="date"  name="employeeDOJ" ID="employeeDOJID" ng-disabled="!edit" ng-model="employee.DOJ" min="2010-01-01"  value="{{ employee.DOJ | date: 'yyyy-MM-dd' }}"   />
+         </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{RepositoryDatafunction('GenderLabel')}}:</label>
+        <div class="col-sm-10">
+            <input type="radio"  ng-disabled="!edit"  ng-model="employee.gender"  value="Male"  /> Male  
+            <input type="radio"  ng-disabled="!edit"  ng-model="employee.gender" value="Female"  /> Female 
+         </div>
+    </div>
+        <div class="form-group">
+        <label class="col-sm-2 control-label">{{RepositoryDatafunction('RoleLabel')}}:</label>
+        <div class="col-sm-10">
+            <select id="ddEmployee" ng-disabled="!edit"  ng-model="employee.Role" >
+                <option ng-repeat="role in RoleList" value="{{role.Role}}" ng-selected="role.Role == employee.Role">{{role.Role}}
+                </option> 
+           </select>  
+         </div>
+    </div>  
+</form>
+
+<a style="cursor:pointer"  onclick="backButton()">Back</a>

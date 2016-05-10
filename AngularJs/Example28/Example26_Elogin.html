@@ -1,0 +1,33 @@
+<form name="frmEmployee" class="form-horizontal"   >
+    <BR />
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+           <span class="error" ng-show="showMessage">{{RepositoryDatafunction('UserPassNotMatchMessage')}}</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{RepositoryDatafunction('UserIDLabel')}}:</label>
+        <div class="col-sm-10">
+            <input type="text" name="userID" ng-model="UserID" ng-disabled="edit" ng-required="true" placeholder="User ID">
+             <span class="error" ng-show="frmEmployee.userID.$error.required">{{RepositoryDatafunction('UserIDReqMessage')}} </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{RepositoryDatafunction('EmployeeNameLabel')}}:</label>
+        <div class="col-sm-10">
+            <input type="password" name="userPassword" ng-model="Password" ng-disabled="edit" ng-required="true" placeholder="*****">
+            <span ng-show="frmEmployee.userPassword.$error.required">{{RepositoryDatafunction('PassReqMessage')}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10">                            
+            <input type="submit" ng-click="LoginSubmit()" value="Login">          
+        </div>
+    </div>
+      
+
+</form>

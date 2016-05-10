@@ -1,0 +1,93 @@
+﻿
+<!DOCTYPE html >
+<html >
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+        var EcoClass = function () {
+
+            this.Eco = "test";
+
+        }
+
+        EcoClass.prototype["$scope"];
+        var objEco = new EcoClass();
+
+        function BodyOnloadPage() {
+
+            var tagobject = document.getElementsByTagName("Input");
+            for (i = 0; i < tagobject.length; i++) {
+                if (typeof tagobject[i].getAttribute("mymodel") !== undefined) {
+                    var eleTag = tagobject[i].getAttribute("mymodel") + "_Nodes"
+
+                    objEco[tagobject[i].getAttribute("mymodel")] = "";
+
+                    objEco[eleTag] = getAllElementsWithAttribute(tagobject[i].getAttribute("mymodel"));
+                    tagobject[i].onkeyup = InputKeypress;
+
+                    tagobject[i].onchange = InputKeypress;
+                }
+
+            }
+
+
+
+        }
+
+
+
+
+        function getAllElementsWithAttribute(prop) {
+            var matchingElements = [];
+            var allElements = document.getElementsByTagName('*');
+            for (var i = 0, n = allElements.length; i < n; i++) {
+                if (allElements[i].getAttribute("bind") == prop) {
+                    matchingElements.push(allElements[i]);
+                }
+            }
+            return matchingElements;
+        }
+
+
+        function InputKeypress() {
+            objEco[this.getAttribute("mymodel")] = this.value;
+            var ele = this.getAttribute("mymodel") + "_Nodes";
+
+
+
+            if (typeof objEco[ele] !== undefined) {
+                if (typeof objEco[ele].length !== undefined) {
+                    for (i = 0; i < objEco[ele].length; i++) {
+                        objEco[ele][i].innerHTML = this.value;
+                    }
+                }
+                else {
+                    objEco[ele].innerHTML = this.value;
+                }
+            }
+        }
+
+
+
+
+
+    </script>
+</head>
+<body onload="BodyOnloadPage()">
+
+
+    <input type="text" mymodel="FirstName" />
+
+    <input type="text"   mymodel="LastName" />
+  
+
+    <br />
+    Hi, <span id="demo" bind="FirstName"></span>  <span id="Span1" bind="LastName"></span> <br />
+
+     
+</body>
+</html>
+	
+ 

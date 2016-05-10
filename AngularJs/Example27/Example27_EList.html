@@ -1,0 +1,64 @@
+
+<form class="form-inline">
+					<div class="form-group">
+						<label >Search</label>
+						<input type="text" ng-model="search" class="form-control" placeholder="Search">
+					</div>
+				
+<table class="table table-striped">
+  <thead>
+      <tr>
+        <th colspan="3">Employee List 
+           <!--<input type="text" ng-model="search.name" placeholder="Search Name" />-->
+        </th>
+          <th>
+              <a ng-href="#/Add">
+                <button class="btn">
+                    <span class="glyphicon glyphicon-pencil"></span>  Add   
+                </button>
+            </a>
+          </th>
+      </tr>
+      <tr style="cursor:pointer">
+        <th  ng-click="sort('empId')">
+            <span class="glyphicon sort-icon" ng-show="sortKey=='empId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"> </span> Emp ID
+        </th>
+        <th  ng-click="sort('name')" >
+            <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"> </span>
+            Name</th>
+        <th ng-click="sort('Salary')" >
+            <span class="glyphicon sort-icon" ng-show="sortKey=='Salary'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"> </span>
+            Salary</th>
+        <th>Edit</th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr dir-paginate="emp in employees|orderBy:sortKey:reverse|filter:search|itemsPerPage:5"  >
+        <td><a ng-href="#/{{emp.empId}}"> {{emp.empId}}</a></td>
+        <td> {{emp.name}}</td>
+        <td> {{emp.Salary | currency}}</td>
+        <td>
+            <a ng-href="#/Edit/{{emp.empId}}">
+                <button class="btn">
+                    <span class="glyphicon glyphicon-pencil"></span>  Edit
+                </button>
+            </a>
+         </td>
+          <td> 
+              <a href="" ng-click="removeName(emp)">
+                  remove
+              </a>
+
+          </td>
+       </tr>
+   </tbody>
+   
+
+</table>
+<dir-pagination-controls
+					max-size="5"
+					direction-links="true"
+					boundary-links="true" >
+				</dir-pagination-controls>
+</form>

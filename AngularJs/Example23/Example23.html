@@ -1,0 +1,65 @@
+<html ng-app="myApp" >
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+      <script src="AngularJS.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script>
+        var app1 = angular.module('myApp', ['ngRoute']);
+
+     var   emplyeesData = [
+          { "empId": 101, "name": "Abhay", "Salary": 10000 },
+          { "empId": 102, "name": "Amruta", "Salary": 15000 },
+          { "empId": 103, "name": "Ajay", "Salary": 30000 },
+          { "empId": 104, "name": "Alok", "Salary": 20000 },
+        ];
+
+    
+
+
+ var myoute=    function ($routeProvider) {
+         $routeProvider.
+           when('/', {
+
+              // template : 'ABhay',
+               template: '<h1>Employee List:</h1> <BR><ul><li ng-repeat="emp in emplyees"> <a ng-href="#/empId/{{emp.empId}}">{{emp.name}}</a> </li><ul>',
+               controller: 'EmployeeListCtrl'
+           }).
+           when('/empId/:empId', {
+               template: '<h1>Employee Detail:</h1> <BR>ID : {{emplyee.empId}}<BR>Name : {{emplyee.name}}<BR>Salary : {{emplyee.Salary}}<BR>',
+               controller: 'EmployeeDetailCtrl'
+           }).
+           otherwise({
+               redirectTo: '/'
+           });   
+     }
+
+
+ app1.config(myoute);
+
+
+        app1.controller('EmployeeDetailCtrl', function ($scope, $routeParams) {
+            $scope.empId =  $routeParams.empId;
+
+            $scope.emplyees = emplyeesData;
+            $scope.emplyee = $scope.emplyees.filter(function (entry) {
+                return entry.empId == $scope.empId;
+            })[0];
+
+             
+
+        });
+
+        app1.controller('EmployeeListCtrl', function ($scope) {           
+            $scope.emplyees = emplyeesData;           
+
+        });
+    </script>
+  </head>
+  <body >
+      <div ng-view>
+          
+      </div>
+  </body>          
+</html> 

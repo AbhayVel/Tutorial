@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+   
+    <script src="AngularJS.js"></script>
+</head>
+<body>
+
+    <form name="myform" ng-app>
+        Date: <input type="date" ng-model="dateData" placeholder="yyyy-MM-dd"  /> <br>
+        Date Key-in is <span ng-bind="dateData | date:'MMM-dd'"></span>.<br />
+
+        InValid Date: <input type="date" name="dateRangeDataName" ng-model="dateRangeData" placeholder="yyyy-MM-dd"  min="2015-01-01" max="2015-12-31" />  <span ng-show="myform.dateRangeDataName.$error.min || myform.dateRangeDataName.$error.min">Please key-in date of year 2015!</span><br>
+        Date Key-in is <span ng-bind="dateRangeData"></span>.<br />
+
+        Require Date: <input type="date" name="dateRiqureDataName" ng-model="dateRiqureData" ng-required="true" placeholder="yyyy-MM-dd"  min="2015-01-01" max="2015-12-31" />  <span ng-show="myform.dateRiqureDataName.$error.required">Please key-in Date!</span><br>
+        Date Key-in is <span ng-bind="dateRiqureData  | date:'dd-MM-yyyy'"></span>.<br />
+    </form>
+</body>
+</html>

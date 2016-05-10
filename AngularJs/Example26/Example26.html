@@ -1,0 +1,60 @@
+<html ng-app="myApp" >
+  <head>
+    <meta charset="utf-8">
+    <title  ng-bind="title"></title>
+
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css">
+<!-- Optional theme -->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">-->
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+
+<!-- Latest compiled and minified JavaScript -->
+
+     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+      <script src="./Example26_Data.js?v=1.0"></script>
+  <script src="./Example26.js?v=1.0"></script>
+      <script src="./Example26_config.js?v=1.0"></script>
+
+      <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+           <script src="./dirPagination.js"></script>
+
+      
+  
+  </head>
+  <body >
+   <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                     <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li style="color:white;cursor:pointer" onclick="srtLogout('-1')"   >LogOut</li>
+                    </ul>
+                </div>
+                </div>
+                
+            </div>
+
+      
+        </div>
+
+      <div class="container body-content">
+          <br />  <br />  <br />  <br />
+          <div ng-view>
+          
+          </div>
+       </div>
+
+ <div ng-include src="'/Example26/Example26_Include.html'">
+
+
+ </div>
+
+  </body>          
+</html> 

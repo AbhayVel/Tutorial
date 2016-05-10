@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('EmployeeCtrl', function ($scope) {
+
+            $scope.firstName = '';
+
+            $scope.names = ['Abhay', 'Amruta', 'Ajay', 'Alok'];
+
+            $scope.addName = function () {
+                $scope.names.push($scope.firstName);
+                $scope.firstName = '';
+            };
+
+        });
+    </script>
+  </head>
+  <body ng-app="myApp"  ng-controller="EmployeeCtrl">
+      <form name="myform" ng-submit="addName()" >       
+          <div >
+               Employee: <input type="text" ng-model="firstName" /> 
+                <input type="submit" value="Add"> <br />
+              List of Employee: 
+              <ul>
+                    <li ng-repeat="name in names">{{name}}</li>
+               </ul>            
+          </div>         
+      </form> 
+  </body>          
+</html> 

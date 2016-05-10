@@ -1,0 +1,77 @@
+<html ng-app="myApp" >
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+
+  
+
+
+    <script>
+        var app = angular.module('myApp', ['ngRoute']);
+
+     var   emplyeesData = [
+          { "empId": 101, "name": "Abhay", "Salary": 10000, "DOJ": "2014-07-07" },
+          { "empId": 102, "name": "Amruta", "Salary": 15000, "DOJ": "2014-07-07" },
+          { "empId": 103, "name": "Ajay", "Salary": 30000, "DOJ": "2014-07-07" },
+          { "empId": 104, "name": "Alok", "Salary": 20000, "DOJ": "2014-07-07" },
+        ];
+
+        app.config(function ($routeProvider) {
+            $routeProvider.
+              when('/', {
+                  templateUrl: 'Example25_EList.html',
+                  controller: 'EmployeeListCtrl'
+              }).
+              when('/:empId', {
+                  templateUrl:  'Example25_EDetail.html',
+                  controller: 'EmployeeDetailCtrl'
+              }).
+            when('/Edit/:empId', {
+                templateUrl:  'Example25_EEdit.html',
+                controller: 'EmployeeDetailCtrl'
+            }).
+              otherwise({
+                  redirectTo: '/'
+              });   
+        });
+
+        app.controller('EmployeeDetailCtrl', function ($scope, $routeParams) {
+            $scope.empId =  $routeParams.empId;
+
+            $scope.emplyees = emplyeesData;
+            $scope.emplyee = $scope.emplyees.filter(function (entry) {
+                return entry.empId == $scope.empId;
+            })[0];
+
+             
+
+        });
+
+        app.controller('EmployeeListCtrl', function ($scope) {           
+            $scope.emplyees = emplyeesData;           
+
+        });
+    </script>
+  </head>
+  <body >
+   
+      <div class="container">
+          <div ng-view>
+          
+          </div>
+       </div>
+  </body>          
+</html> 

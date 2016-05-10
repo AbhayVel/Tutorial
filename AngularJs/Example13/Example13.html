@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('EmployeeCtrl', function ($scope) {
+            $scope.firstName = "";
+            $scope.lastName = "";
+            $scope.fullName = function () {
+                return $scope.firstName + " " + $scope.lastName;
+            }
+            $scope.alertName = function () {
+                alert($scope.fullName());
+            }
+        });
+    </script>
+  </head>
+  <body >
+      
+      <form name="myform" ng-app="myApp" >       
+          <div ng-controller="EmployeeCtrl">
+            First Name: <input type="Text" name="EmployeeFirstName"  ID="EmployeeFirstID" ng-required="true" ng-model="firstName">    <span ng-show="myform.EmployeeFirstName.$error.required">It is require.</span> <br> <br>
+            Last Name: <input type="Text" name="EmployeeLastName"  ID="EmployeeLastID"  ng-required="true" ng-model="lastName">  <span ng-show="myform.EmployeeLastName.$error.required">It is require.</span> <br> <br>
+            <br>
+            Full Name: {{fullName()}}    <br>
+           Hello,   <span ng-bind="fullName()"> </span> <br>
+              
+              <button     ng-click="alertName()" value="Click" >Click</button>   
+          </div>         
+      </form> 
+
+
+
+ 
+
+
+  </body>          
+</html> 

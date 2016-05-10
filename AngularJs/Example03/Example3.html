@@ -1,0 +1,18 @@
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>-->
+     
+      <script src="AngularJS.js"></script>
+  </head>
+  <body>
+    Data: <input ng-model="data" type="text"/> <BR>
+     Upper Case:  <span ng-bind="data | uppercase"></span> <BR>
+     Lower Case:  <span ng-bind="data | lowercase"></span> <BR>
+Numeric: <input ng-model="numericData " type="text"/> <BR>
+     Number :  <span ng-bind="numericData | number "></span> <BR>
+     Currency:  <span ng-bind="numericData | currency:'rs'"></span><BR>
+       Data:  <span ng-bind="numericData"></span>
+  </body>
+</html> 
